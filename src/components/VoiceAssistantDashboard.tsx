@@ -54,42 +54,6 @@ const VoiceAssistantDashboard = () => {
       <div className="flex min-h-[calc(100vh-73px)]">
         {/* Left Sidebar */}
         <aside className="w-80 border-r bg-card/50 backdrop-blur-sm p-6 space-y-6">
-          <Card className="border-success/20 shadow-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg text-success">Analytics</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {analyticsData.map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-2 rounded-lg hover:bg-secondary/50 transition-colors">
-                  <span className="text-sm text-foreground">{item.label}</span>
-                  <Badge 
-                    variant="outline" 
-                    className={`
-                      ${item.color === 'success' ? 'border-success text-success' : ''}
-                      ${item.color === 'warning' ? 'border-warning text-warning' : ''}
-                      ${item.color === 'info' ? 'border-info text-info' : ''}
-                      ${item.color === 'purple' ? 'border-purple text-purple' : ''}
-                      ${item.color === 'muted' ? 'border-muted text-muted-foreground' : ''}
-                    `}
-                  >
-                    {item.value}
-                  </Badge>
-                </div>
-              ))}
-              <div className="pt-4 border-t border-border/50">
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-muted-foreground">Total Issues</span>
-                  <span className="font-semibold text-warning">75%</span>
-                </div>
-                <div className="mt-1 text-xs text-muted-foreground">Resolved</div>
-              </div>
-            </CardContent>
-          </Card>
-        </aside>
-
-        {/* Main Content */}
-        <main className="flex-1 p-6 space-y-6">
-          {/* Voice Assistant */}
           <Card className="border-primary/20 shadow-sm">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg text-primary">Voice Assistant</CardTitle>
@@ -115,7 +79,43 @@ const VoiceAssistantDashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Sensitivity */}
+          <Card className="border-info/20 shadow-sm">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg text-info">Live Conversation</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Current Session</span>
+                  <span className="text-sm font-medium">2 msgs</span>
+                </div>
+                <div className="bg-gradient-to-r from-accent/10 to-primary/10 p-3 rounded-lg">
+                  <p className="text-sm text-foreground/80">
+                    Gear problem! How bad is it broken? Als je specifieke informatie nodig hebt, laat het me dan weten!
+                  </p>
+                  <div className="mt-2 text-xs text-muted-foreground">
+                    13:26 • meeting support
+                  </div>
+                </div>
+                <div className="bg-accent/20 p-3 rounded-lg ml-6">
+                  <p className="text-sm text-foreground">
+                    Hot topic our hair good girl/band
+                  </p>
+                  <div className="mt-2 text-xs text-muted-foreground">
+                    11:45 • audio issue
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <span className="text-xs text-muted-foreground">Real-time analysis</span>
+                <div className="mt-1 text-sm font-medium text-warning">2 total</div>
+              </div>
+            </CardContent>
+          </Card>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-6 space-y-6">
           <Card className="border-purple/20 shadow-lg">
             <CardContent className="p-6">
               <div className="space-y-6">
@@ -171,45 +171,42 @@ const VoiceAssistantDashboard = () => {
               </div>
             </CardContent>
           </Card>
-
-          {/* Live Conversation */}
-          <Card className="border-info/20 shadow-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg text-info">Live Conversation</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Current Session</span>
-                  <span className="text-sm font-medium">2 msgs</span>
-                </div>
-                <div className="bg-gradient-to-r from-accent/10 to-primary/10 p-3 rounded-lg">
-                  <p className="text-sm text-foreground/80">
-                    Gear problem! How bad is it broken? Als je specifieke informatie nodig hebt, laat het me dan weten!
-                  </p>
-                  <div className="mt-2 text-xs text-muted-foreground">
-                    13:26 • meeting support
-                  </div>
-                </div>
-                <div className="bg-accent/20 p-3 rounded-lg ml-6">
-                  <p className="text-sm text-foreground">
-                    Hot topic our hair good girl/band
-                  </p>
-                  <div className="mt-2 text-xs text-muted-foreground">
-                    11:45 • audio issue
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 text-center">
-                <span className="text-xs text-muted-foreground">Real-time analysis</span>
-                <div className="mt-1 text-sm font-medium text-warning">2 total</div>
-              </div>
-            </CardContent>
-          </Card>
         </main>
 
         {/* Right Sidebar */}
         <aside className="w-80 border-l bg-card/50 backdrop-blur-sm p-6 space-y-6">
+          <Card className="border-success/20 shadow-sm">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg text-success">Analytics</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {analyticsData.map((item, index) => (
+                <div key={index} className="flex items-center justify-between p-2 rounded-lg hover:bg-secondary/50 transition-colors">
+                  <span className="text-sm text-foreground">{item.label}</span>
+                  <Badge 
+                    variant="outline" 
+                    className={`
+                      ${item.color === 'success' ? 'border-success text-success' : ''}
+                      ${item.color === 'warning' ? 'border-warning text-warning' : ''}
+                      ${item.color === 'info' ? 'border-info text-info' : ''}
+                      ${item.color === 'purple' ? 'border-purple text-purple' : ''}
+                      ${item.color === 'muted' ? 'border-muted text-muted-foreground' : ''}
+                    `}
+                  >
+                    {item.value}
+                  </Badge>
+                </div>
+              ))}
+              <div className="pt-4 border-t border-border/50">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted-foreground">Total Issues</span>
+                  <span className="font-semibold text-warning">75%</span>
+                </div>
+                <div className="mt-1 text-xs text-muted-foreground">Resolved</div>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card className="border-accent/20 shadow-sm">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg text-accent">Knowledge Base</CardTitle>
